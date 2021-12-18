@@ -33,7 +33,7 @@ class _UserCardInfoState extends State<UserCardInfo> {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         const CircleAvatar(
-          backgroundImage: AssetImage('assets/images/user.png'),
+          backgroundImage: AssetImage('assets/images/user/user.png'),
           radius: 50,
         ),
         StreamBuilder(

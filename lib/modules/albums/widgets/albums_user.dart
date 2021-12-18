@@ -67,7 +67,7 @@ class _AlbumsUserState extends State<AlbumsUser> {
               ),
               TextButton(
                 onPressed: () => Navigator.of(context).push(MaterialPageRoute(
-                  builder: (_) => const AlbumsScreen(),
+                  builder: (_) => AlbumsScreen(userId: widget.userId,),
                 )),
                 child: const Text('Подробнее'),
               )

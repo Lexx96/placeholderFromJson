@@ -7,7 +7,8 @@ import 'model/albums_model.dart';
 
 /// Экран списка альбомов
 class AlbumsScreen extends StatefulWidget {
-  const AlbumsScreen({Key? key}) : super(key: key);
+  final int userId;
+  const AlbumsScreen({Key? key, required this.userId}) : super(key: key);
 
   @override
   _AlbumsScreenState createState() => _AlbumsScreenState();
@@ -21,7 +22,7 @@ class _AlbumsScreenState extends State<AlbumsScreen> {
   void initState() {
     super.initState();
     _bloc = AlbumsBloc();
-    _bloc.getAlbumsScreenBloc(userId: 3);
+    _bloc.getAlbumsScreenBloc(userId: widget.userId);
   }
 
   @override

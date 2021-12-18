@@ -33,7 +33,7 @@ class _UsersScreenState extends State<UsersScreen> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Test For Eclipse DS'),
+        title: const Text('Test App For Eclipse DS'),
       ),
       body: StreamBuilder(
           stream: _bloc.usersStreamController,
@@ -84,7 +84,7 @@ class _UsersScreenState extends State<UsersScreen> {
                 const Padding(
                   padding: EdgeInsets.all(16.0),
                   child: CircleAvatar(
-                    backgroundImage: AssetImage('assets/images/user.png'),
+                    backgroundImage: AssetImage('assets/images/user/user.png'),
                     radius: 32,
                   ),
                 ),

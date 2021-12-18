@@ -5,7 +5,6 @@ import '../modules/users/user_list_screen.dart';
 /// Класс параметров навигации
 abstract class MainNavigationRouteName {
   static const usersScreen = 'usersScreen';
-  static const userPage = 'userPage';
   static const addCommentPage = 'addCommentPage';
 }
 
