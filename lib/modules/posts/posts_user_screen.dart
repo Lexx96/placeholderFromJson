@@ -8,6 +8,7 @@ import 'post_detail_screen.dart';
 /// Экран списка постов пользователя
 class PostsUserScreen extends StatefulWidget {
   final int userId;
+
   const PostsUserScreen({Key? key, required this.userId}) : super(key: key);
 
   @override
@@ -47,9 +48,11 @@ class _PostsUserScreenState extends State<PostsUserScreen> {
                 return InkWell(
                   highlightColor: Colors.transparent,
                   splashColor: Colors.transparent,
-                  onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                    builder: (_) => const PostDetailScreen(),
-                  )),
+                  onTap: () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) => PostDetailScreen(postId: _postsData[index].id,),
+                    ),
+                  ),
                   child: PostCard(postsData: _postsData[index]),
                 );
               },

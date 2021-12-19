@@ -16,7 +16,7 @@ class ImageGalleryWidget extends StatefulWidget {
 }
 
 class _ImageGalleryWidgetState extends State<ImageGalleryWidget> {
-  ValueNotifier _data = ValueNotifier('');
+  final ValueNotifier _data = ValueNotifier('');
   PageController _pageController = PageController();
 
   @override
@@ -53,7 +53,6 @@ class _ImageGalleryWidgetState extends State<ImageGalleryWidget> {
                     image: DecorationImage(
                       image: NetworkImage(images.url),
                     ),
-                    borderRadius: const BorderRadius.all(Radius.circular(15.0)),
                   ),
                 ),
               );

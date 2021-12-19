@@ -18,10 +18,10 @@ class AlbumsBloc {
     _albumsUserStreamController.sink.add(AlbumsState.loadedAlbumsState(_albumsData));
   }
 
-  /// Получение всех альбомов пользователя
-  /// Принимает int [userId] - id пользователя
-  void getAlbumsScreenBloc ({required int userId}) async {
-    List<AlbumsModel> _albumsData = await AlbumsService().getAllAlbums(userId: userId);
+  /// Получение всех альбомов пользователя с пагинацией
+  /// Принимает int [userId] - id пользователя, int [start] - стартовая позициязагрузки
+  void getAlbumsScreenBloc ({required int userId, required int start}) async {
+    List<AlbumsModel> _albumsData = await AlbumsService().getAllAlbums(userId: userId, start: start);
     _albumsScreenStreamController.sink.add(AlbumsState.loadedAlbumsState(_albumsData));
   }
 

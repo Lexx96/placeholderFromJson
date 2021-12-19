@@ -8,6 +8,7 @@ import 'model/albums_model.dart';
 /// Экран списка альбомов
 class AlbumsScreen extends StatefulWidget {
   final int userId;
+
   const AlbumsScreen({Key? key, required this.userId}) : super(key: key);
 
   @override
@@ -16,13 +17,13 @@ class AlbumsScreen extends StatefulWidget {
 
 class _AlbumsScreenState extends State<AlbumsScreen> {
   late AlbumsBloc _bloc;
-  List<AlbumsModel> _albumsData = [];
+  final List<AlbumsModel> _allAlbumsData = [];
 
   @override
   void initState() {
     super.initState();
     _bloc = AlbumsBloc();
-    _bloc.getAlbumsScreenBloc(userId: widget.userId);
+    _bloc.getAlbumsScreenBloc(userId: widget.userId, start: 0);
   }
 
   @override
@@ -33,27 +34,36 @@ class _AlbumsScreenState extends State<AlbumsScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+    final _isTurn = MediaQuery.of(context).orientation == Orientation.portrait;
+
     return Scaffold(
       body: StreamBuilder(
         stream: _bloc.albumsScreenStreamController,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.data is LoadedAlbumsState) {
             final _data = snapshot.data as LoadedAlbumsState;
-            _albumsData = _data.albumsData;
+            _allAlbumsData.addAll(_data.albumsData);
 
             return GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: _isTurn ? 2 : 3,
                 mainAxisSpacing: 5.0,
                 crossAxisSpacing: 5.0,
               ),
-              itemCount: _albumsData.length,
+              itemCount: _allAlbumsData.length,
               itemBuilder: (BuildContext context, int index) {
+                if (index == (_allAlbumsData.length - 2)) {
+                  _bloc.getAlbumsScreenBloc(
+                      userId: widget.userId,
+                      start: _allAlbumsData.length,
+                  );
+                }
 
                 return InkWell(
                     splashColor: Colors.transparent,
-                    onTap: () => _openGallery(index, _albumsData),
-                    child: AlbumsCard(albumsData: _albumsData[index]));
+                    onTap: () => _openGallery(index, _allAlbumsData),
+                    child: AlbumsCard(albumsData: _allAlbumsData[index]));
               },
             );
           }

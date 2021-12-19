@@ -19,16 +19,12 @@ class AlbumsCard extends StatelessWidget {
       clipBehavior: Clip.hardEdge,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Stack(
-          children: [
-            CachedNetworkImage(
-              imageUrl: albumsData.url,
-              placeholder: (context, url) => Container(
-                color: Colors.grey,
-              ),
-              errorWidget: (context, url, error) => const Icon(Icons.error),
-            ),
-          ],
+        child: CachedNetworkImage(
+          imageUrl: albumsData.url,
+          placeholder: (context, url) => Container(
+            color: Colors.grey,
+          ),
+          errorWidget: (context, url, error) => const Icon(Icons.error),
         ),
       ),
     );

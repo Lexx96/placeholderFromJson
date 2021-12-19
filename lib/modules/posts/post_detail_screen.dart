@@ -8,7 +8,8 @@ import 'model/posts_model.dart';
 
 /// Экран вывода подробной информации о посте
 class PostDetailScreen extends StatefulWidget {
-  const PostDetailScreen({Key? key}) : super(key: key);
+  final int postId;
+  const PostDetailScreen({Key? key, required this.postId}) : super(key: key);
 
   @override
   State<PostDetailScreen> createState() => _PostDetailScreenState();
@@ -22,7 +23,7 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
   void initState() {
     super.initState();
     _bloc = PostsBloc();
-    _bloc.getPostsUserDetailScreenBloc(postId: 1);
+    _bloc.getPostsUserDetailScreenBloc(postId: widget.postId);
   }
 
   @override

@@ -18,15 +18,14 @@ class AlbumsService {
       }catch(e){
         throw Exception(e);
       }
-    } else if(response.statusCode == 400){
-      throw Exception('неправильный, некорректный запрос');
     }
+    throw Exception('неправильный, некорректный запрос');
   }
 
-  /// Отправка запроса на сервер для получения всех альбомов пользователя
-  /// Принимает int [userId] - id пользователя
-  Future getAllAlbums({required int userId}) async {
-    final Response response = await AlbumsRepository.getAllAlbums(userId: userId);
+  /// Отправка запроса на сервер для получение всех альбомов пользователя с пагинацией
+  /// Принимает int [userId] - id пользователя, int [start] - стартовая позициязагрузки
+  Future getAllAlbums({required int userId, required int start}) async {
+    final Response response = await AlbumsRepository.getAllAlbums(userId: userId, start: start);
 
     if(response.statusCode == 200) {
       try{
@@ -36,8 +35,7 @@ class AlbumsService {
       }catch(e){
         throw Exception(e);
       }
-    } else if(response.statusCode == 400){
-      throw Exception('неправильный, некорректный запрос');
     }
+    throw Exception('неправильный, некорректный запрос');
   }
 }

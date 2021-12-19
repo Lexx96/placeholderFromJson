@@ -38,7 +38,6 @@ class _PostsUserState extends State<PostsUser> {
     return StreamBuilder(
       stream: _bloc.postStreamController,
       builder: (BuildContext context, AsyncSnapshot snapshot) {
-
         if (snapshot.data is LoadedPostsState) {
           final _data = snapshot.data as LoadedPostsState;
           _postsData = _data.postsData;
@@ -55,9 +54,11 @@ class _PostsUserState extends State<PostsUser> {
                 },
               ),
               TextButton(
-                onPressed: () => Navigator.of(context).push(MaterialPageRoute(
-                  builder: (_) => PostsUserScreen(userId: widget.userId),
-                )),
+                onPressed: () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (_) => PostsUserScreen(userId: widget.userId),
+                  ),
+                ),
                 child: const Text('Подробнее'),
               )
             ],

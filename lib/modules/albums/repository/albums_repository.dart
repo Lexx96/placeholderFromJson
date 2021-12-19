@@ -13,11 +13,11 @@ class AlbumsRepository {
     );
   }
 
-  /// Отправка запроса на сервер для получения всех альбомов пользователя
-  /// Принимает int [userId] - id пользователя
-  static getAllAlbums<Response>({required int userId}) async {
+  /// Отправка запроса на сервер для получение всех альбомов пользователя с пагинацией
+  /// Принимает int [userId] - id пользователя, int [start] - стартовая позициязагрузки
+  static getAllAlbums<Response>({required int userId, required int start}) async {
     return await http.get(
-      Uri.parse('$url$userId'),
+      Uri.parse('$url$userId&_start=$start&_limit=20'),
     );
   }
 }
