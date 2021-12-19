@@ -53,7 +53,8 @@
       
 
 <span class="returntype">dynamic</span>
-<span class="name ">getAllAlbums</span>&lt;<wbr><span class="type-parameter">Response</span>&gt;(<wbr><ol class="parameter-list"><li><span class="parameter" id="getAllAlbums-param-userId">{<span>required</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.3/dart-core/int-class.html">int</a></span> <span class="parameter-name">userId</span>}</span></li>
+<span class="name ">getAllAlbums</span>&lt;<wbr><span class="type-parameter">Response</span>&gt;(<wbr><ol class="parameter-list"><li><span class="parameter" id="getAllAlbums-param-userId">{<span>required</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.3/dart-core/int-class.html">int</a></span> <span class="parameter-name">userId</span>, </span></li>
+<li><span class="parameter" id="getAllAlbums-param-start"><span>required</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.3/dart-core/int-class.html">int</a></span> <span class="parameter-name">start</span>}</span></li>
 </ol>)
 
       
@@ -61,17 +62,17 @@
     </section>
     
 <section class="desc markdown">
-  <p>Отправка запроса на сервер для получения всех альбомов пользователя
-Принимает int <code>userId</code> - id пользователя</p>
+  <p>Отправка запроса на сервер для получение всех альбомов пользователя с пагинацией
+Принимает int <code>userId</code> - id пользователя, int <code>start</code> - стартовая позициязагрузки</p>
 </section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">static getAllAlbums&lt;Response&gt;({required int userId}) async {
+  <pre class="language-dart"><code class="language-dart">static getAllAlbums&lt;Response&gt;({required int userId, required int start}) async {
   return await http.get(
-    Uri.parse(&#39;$url$userId&#39;),
+    Uri.parse(&#39;$url$userId&amp;_start=$start&amp;_limit=20&#39;),
   );
 }</code></pre>
 </section>

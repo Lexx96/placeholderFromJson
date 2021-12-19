@@ -81,9 +81,8 @@
     }catch(e){
       throw Exception(e);
     }
-  } else if(response.statusCode == 400){
-    throw Exception(&#39;неправильный, некорректный запрос&#39;);
   }
+  throw Exception(&#39;неправильный, некорректный запрос&#39;);
 }</code></pre>
 </section>
 

@@ -53,7 +53,8 @@
       
 
 <span class="returntype">void</span>
-<span class="name ">getAlbumsScreenBloc</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="getAlbumsScreenBloc-param-userId">{<span>required</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.3/dart-core/int-class.html">int</a></span> <span class="parameter-name">userId</span>}</span></li>
+<span class="name ">getAlbumsScreenBloc</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="getAlbumsScreenBloc-param-userId">{<span>required</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.3/dart-core/int-class.html">int</a></span> <span class="parameter-name">userId</span>, </span></li>
+<li><span class="parameter" id="getAlbumsScreenBloc-param-start"><span>required</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.3/dart-core/int-class.html">int</a></span> <span class="parameter-name">start</span>}</span></li>
 </ol>)
 
       
@@ -61,16 +62,16 @@
     </section>
     
 <section class="desc markdown">
-  <p>Получение всех альбомов пользователя
-Принимает int <code>userId</code> - id пользователя</p>
+  <p>Получение всех альбомов пользователя с пагинацией
+Принимает int <code>userId</code> - id пользователя, int <code>start</code> - стартовая позициязагрузки</p>
 </section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">void getAlbumsScreenBloc ({required int userId}) async {
-  List&lt;AlbumsModel&gt; _albumsData = await AlbumsService().getAllAlbums(userId: userId);
+  <pre class="language-dart"><code class="language-dart">void getAlbumsScreenBloc ({required int userId, required int start}) async {
+  List&lt;AlbumsModel&gt; _albumsData = await AlbumsService().getAllAlbums(userId: userId, start: start);
   _albumsScreenStreamController.sink.add(AlbumsState.loadedAlbumsState(_albumsData));
 }</code></pre>
 </section>

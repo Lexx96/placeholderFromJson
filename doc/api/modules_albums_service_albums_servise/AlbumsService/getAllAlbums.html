@@ -53,7 +53,8 @@
       
 
 <span class="returntype"><a href="https://api.dart.dev/stable/2.14.3/dart-async/Future-class.html">Future</a></span>
-<span class="name ">getAllAlbums</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="getAllAlbums-param-userId">{<span>required</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.3/dart-core/int-class.html">int</a></span> <span class="parameter-name">userId</span>}</span></li>
+<span class="name ">getAllAlbums</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="getAllAlbums-param-userId">{<span>required</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.3/dart-core/int-class.html">int</a></span> <span class="parameter-name">userId</span>, </span></li>
+<li><span class="parameter" id="getAllAlbums-param-start"><span>required</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.3/dart-core/int-class.html">int</a></span> <span class="parameter-name">start</span>}</span></li>
 </ol>)
 
       
@@ -61,16 +62,16 @@
     </section>
     
 <section class="desc markdown">
-  <p>Отправка запроса на сервер для получения всех альбомов пользователя
-Принимает int <code>userId</code> - id пользователя</p>
+  <p>Отправка запроса на сервер для получение всех альбомов пользователя с пагинацией
+Принимает int <code>userId</code> - id пользователя, int <code>start</code> - стартовая позициязагрузки</p>
 </section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future getAllAlbums({required int userId}) async {
-  final Response response = await AlbumsRepository.getAllAlbums(userId: userId);
+  <pre class="language-dart"><code class="language-dart">Future getAllAlbums({required int userId, required int start}) async {
+  final Response response = await AlbumsRepository.getAllAlbums(userId: userId, start: start);
 
   if(response.statusCode == 200) {
     try{
@@ -80,9 +81,8 @@
     }catch(e){
       throw Exception(e);
     }
-  } else if(response.statusCode == 400){
-    throw Exception(&#39;неправильный, некорректный запрос&#39;);
   }
+  throw Exception(&#39;неправильный, некорректный запрос&#39;);
 }</code></pre>
 </section>
 

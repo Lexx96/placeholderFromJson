@@ -116,15 +116,15 @@
 </dd>
 
         <dt id="getAllAlbums" class="callable">
-  <span class="name"><a href="../modules_albums_service_albums_servise/AlbumsService/getAllAlbums.html">getAllAlbums</a></span><span class="signature">(<wbr><span class="parameter" id="getAllAlbums-param-userId">{<span>required</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.3/dart-core/int-class.html">int</a></span> <span class="parameter-name">userId</span>}</span>)
+  <span class="name"><a href="../modules_albums_service_albums_servise/AlbumsService/getAllAlbums.html">getAllAlbums</a></span><span class="signature">(<wbr><span class="parameter" id="getAllAlbums-param-userId">{<span>required</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.3/dart-core/int-class.html">int</a></span> <span class="parameter-name">userId</span>, </span><span class="parameter" id="getAllAlbums-param-start"><span>required</span> <span class="type-annotation"><a href="https://api.dart.dev/stable/2.14.3/dart-core/int-class.html">int</a></span> <span class="parameter-name">start</span>}</span>)
     <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/2.14.3/dart-async/Future-class.html">Future</a></span>
   </span>
   
 
 </dt>
 <dd>
-  Отправка запроса на сервер для получения всех альбомов пользователя
-Принимает int <code>userId</code> - id пользователя 
+  Отправка запроса на сервер для получение всех альбомов пользователя с пагинацией
+Принимает int <code>userId</code> - id пользователя, int <code>start</code> - стартовая позициязагрузки 
   
 
 </dd>
